@@ -1,0 +1,18 @@
+{
+  "name": "@ivadev/vietnamese-lunar-api",
+  "version": "1.0.0",
+  "description": "Thin server-side client for the IvaDev Vietnamese Lunar API",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  },
+  "files": ["index.js", "index.d.ts", "README.md"],
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
