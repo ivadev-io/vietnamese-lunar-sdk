@@ -21,7 +21,7 @@ jobs:
         run: npm test
       - name: Confirm the private engine is not embedded
         run: |
-          if grep -R -E 'SearchMoonPhase|month11Anchor|API_KEY_PEPPER|ADMIN_API_KEYS' --exclude-dir=.git .; then
+          if grep -R -E 'SearchMoonPhase|month11Anchor|API_KEY_PEPPER|ADMIN_API_KEYS' --exclude-dir=.git --exclude=verify.yml .; then
             echo 'Private implementation or credential marker found in SDK repository.' >&2
             exit 1
           fi
