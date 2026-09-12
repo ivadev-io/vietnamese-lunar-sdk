@@ -1,0 +1,27 @@
+name: Verify SDK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Test JavaScript client
+        working-directory: javascript
+        run: npm test
+      - name: Confirm the private engine is not embedded
+        run: |
+          if grep -R -E 'SearchMoonPhase|month11Anchor|API_KEY_PEPPER|ADMIN_API_KEYS' --exclude-dir=.git .; then
+            echo 'Private implementation or credential marker found in SDK repository.' >&2
+            exit 1
+          fi
